@@ -1,6 +1,6 @@
 let express = require('express');
 //renvoie un objet express
-let app = express();
+let app = express(); // test express
 
 app.use(express.static('public'));
 
