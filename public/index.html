@@ -11,6 +11,7 @@
             text-align: center;
         }
     </style>
+
 </head>
 
 <body>
@@ -26,6 +27,102 @@
         <button class="stop">stop</button>
         <button class="horn">horn</button>
     </div>
+
+    <script>
+        let forward = document.querySelector('.forward');
+        let backward = document.querySelector('.backward');
+        let left = document.querySelector('.left');
+        let right = document.querySelector('.right');
+        let stop = document.querySelector('.stop');
+
+
+        forward.addEventListener('click', function() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '/bot/forward');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.response);
+                        eval(xhr.responseText);
+                        console.log(xhr.responseText);
+                    } else {
+                        console.error('unexpected status code:', this.status);
+                    }
+                }
+            };
+            xhr.send(null);
+        });
+
+        backward.addEventListener('click', function() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '/bot/backward');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.response);
+                        eval(xhr.responseText);
+                        console.log('test');
+                        console.log(xhr.responseText);
+                    } else {
+                        console.error('unexpected status code:', this.status);
+                    }
+                }
+            };
+            xhr.send(null);
+        });
+
+        left.addEventListener('click', function() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '/bot/left');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.response);
+                        eval(xhr.responseText);
+                        console.log(xhr.responseText);
+                    } else {
+                        console.error('unexpected status code:', this.status);
+                    }
+                }
+            };
+            xhr.send(null);
+        });
+
+        right.addEventListener('click', function() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '/bot/right');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.response);
+                        eval(xhr.responseText);
+                        console.log(xhr.responseText);
+                    } else {
+                        console.error('unexpected status code:', this.status);
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+
+        stop.addEventListener('click', function() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '/bot/stop');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.response);
+                        eval(xhr.responseText);
+                        console.log(xhr.responseText);
+                    } else {
+                        console.error('unexpected status code:', this.status);
+                    }
+                }
+            };
+            xhr.send(null);
+        });
+    </script>
 
 </body>
 
