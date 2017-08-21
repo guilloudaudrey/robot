@@ -39,7 +39,7 @@ app.get('/bot/forward', function() {
         r_motor.forward(100);
 
     })
-    process.exit(1);
+
 });
 
 app.get('/bot/backward', function() {
