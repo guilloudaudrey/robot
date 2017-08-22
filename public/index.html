@@ -26,6 +26,7 @@
         <br><br>
         <button class="stop">stop</button>
         <button class="horn">horn</button>
+        <p class="sensor" style="width: 200px; height: 50px; background: yellow"></p>
     </div>
 
     <script>
@@ -34,6 +35,8 @@
         let left = document.querySelector('.left');
         let right = document.querySelector('.right');
         let stop = document.querySelector('.stop');
+        let horn = document.querySelector('.horn');
+        let sensor = document.querySelector('.sensor');
 
 
         forward.addEventListener('click', function() {
@@ -122,6 +125,22 @@
             };
             xhr.send(null);
         });
+
+        setInterval(function() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '/bot/sensor');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+
+                        console.log(responseText);
+                    } else {
+                        console.error('unexpected status code:', this.status);
+                    }
+                }
+            };
+            xhr.send(null);
+        }, 500);
     </script>
 
 </body>

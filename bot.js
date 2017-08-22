@@ -37,3 +37,7 @@ app.get('/bot/right', function() {
 app.get('/bot/stop', function() {
     rob.stop();
 });
+
+app.get('/bot/sensor', function() {
+    rob.sensor();
+});
