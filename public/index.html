@@ -132,8 +132,8 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
-
-                        console.log(response);
+                        let messages = JSON.parse(xhr.response);
+                        console.log(messages);
                     } else {
                         console.error('unexpected status code:', this.status);
                     }
