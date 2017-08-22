@@ -2,11 +2,7 @@ let five = require("johnny-five");
 
 class Robot {
     constructor() {
-        this.modules = [];
-    }
-
-    addModule(module) {
-        this.modules.push(module);
+        this.rawsensor = [];
     }
 
     start() {
@@ -20,10 +16,8 @@ class Robot {
             that.rightMotor = new five.Motor({
                 pins: { pwm: 5, dir: 4 }
             });
-            for (let module of that.modules) {
-                module.init(that);
-            }
         });
+        this.sensor();
     }
 
     moveForward() {
@@ -54,18 +48,20 @@ class Robot {
     }
 
     sensor() {
+        const that = this;
         this.board.on("ready", function() {
 
             // Create a new `reflectance` hardware instance.
             let eyes = new five.IR.Reflect.Array({
                 emitter: 13,
                 pins: ["A3", "A2"], // any number of pins
-                freq: 100,
+                freq: 500,
                 autoCalibrate: true,
             });
 
             eyes.on('data', function() {
-                console.log("Raw Values: ", this.raw);
+                console.log("Raw Values: ", that.rawsensor = this.raw);
+
             });
 
             eyes.on('line', function() {

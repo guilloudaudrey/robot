@@ -38,6 +38,6 @@ app.get('/bot/stop', function() {
     rob.stop();
 });
 
-app.get('/bot/sensor', function() {
-    rob.sensor();
+app.get('/bot/sensor', function(req, resp) {
+    resp.send(rob.rawsensor);
 });
