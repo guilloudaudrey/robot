@@ -134,6 +134,7 @@
                     if (xhr.status === 200) {
                         let messages = JSON.parse(xhr.response);
                         console.log(messages);
+                        sensor.innerHTML = messages;
                     } else {
                         console.error('unexpected status code:', this.status);
                     }
